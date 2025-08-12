@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Amigo Secreto</title>
+<style>
+  :root {
+    --primary-color: #e67e22;
+    --primary-dark: #d35400;
+    --secondary-color: #f39c12;
+    --light-color: #fff3e0;
+    --background-gradient-start: #fceabb;
+    --background-gradient-end: #f8b500;
+    --text-color: #333;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+  }
+
+  .container:hover {
+    transform: translateY(-5px);
+  }
+
+  h1 {
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+
+  textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+  }
+
+  textarea::placeholder {
+    color: #aaa;
+  }
+
+  button {
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    display: inline-block;
+    margin: 10px 0;
+  }
+
+  button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    text-align: left;
+  }
+
+  li {
+    background: var(--light-color);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+  }
+
+  li:hover::before {
+    width: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    button {
+      width: 100%;
+      padding: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>🎉 Simulador de Amigo Secreto</h1>
+  <p>Digite os nomes dos participantes (um por linha):</p>
+  <textarea id="nomes" placeholder="Ex: Ana&#10;Carlos&#10;Beatriz"></textarea><br>
+  <button onclick="sortear()">Sortear</button>
+
+  <ul id="resultado"></ul>
+
+  <script>
+    function sortear() {
+      const entrada = document.getElementById("nomes").value.trim();
+      const nomes = entrada.split("\n").map(n => n.trim()).filter(n => n);
+      if (nomes.length < 2) {
+        alert("Digite pelo menos dois nomes!");
+        return;
+      }
+
+      const sorteados = [...nomes];
+      let valido = false;
+
+      // Embaralhar até que ninguém tire a si mesmo
+      while (!valido) {
+        sorteados.sort(() => Math.random() - 0.5);
+        valido = nomes.every((nome, i) => nome !== sorteados[i]);
+      }
+
+      const lista = document.getElementById("resultado");
+      lista.innerHTML = "";
+      nomes.forEach((nome, i) => {
+        const item = document.createElement("li");
+        item.textContent = `${nome} tirou ${sorteados[i]}`;
+        lista.appendChild(item);
+      });
+    }
+  </script>
+</body>
+</html>
