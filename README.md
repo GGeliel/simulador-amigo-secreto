@@ -31,7 +31,7 @@ Projeto simples e estilizado para sorteio de **Amigo Secreto** feito em HTML, CS
 
 - HTML5
 - CSS3 (com variáveis e responsividade)
-- JavaScript puro
+- JavaScript 
 
 /
 Feito com 💙 para facilitar seu sorteio de amigo secreto!
