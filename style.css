@@ -1,0 +1,214 @@
+:root {
+    --color-primary: #4B69FD;
+    --color-secondary: rgba(30, 32, 48, 0.7); /* Fundo semi-transparente */
+    --color-tertiary: #23243a;
+    --color-button: #fe652b;
+    --color-button-hover: #e55720;
+    --color-text: #e0e6f0;
+    --color-white: #23243a;
+    --color-shadow: rgba(75, 105, 253, 0.12);
+    --color-accent: #34d399;
+}
+
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #181a23 60%, #23243a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    color: var(--color-text);
+}
+
+.main-content {
+    background: var(--color-secondary);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px var(--color-shadow);
+    padding: 40px 32px 32px 32px;
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255,255,255,0.08);
+}
+
+/* Banner */
+.header-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Títulos */
+.main-title {
+    font-size: 2.8rem;
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--color-primary);
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 8px #0008;
+}
+
+/* Imagem do banner */
+.header-banner img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 2px 12px var(--color-shadow);
+    object-fit: cover;
+    margin-top: 8px;
+    background: #27283a;
+}
+
+/* Seção de entrada */
+.input-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Títulos das seções */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Contêineres de entrada e botão */
+.input-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 340px;
+    gap: 0;
+    margin-bottom: 10px;
+}
+
+#input-nome {
+    flex: 1;
+    padding: 12px 18px;
+    border: 2px solid var(--color-primary);
+    border-radius: 25px 0 0 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #373d55;
+    color: var(--color-text);
+    box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+#input-nome:focus {
+    border-color: var(--color-button);
+}
+
+.input-wrapper button {
+    padding: 12px 24px;
+    background: var(--color-button);
+    color: #fff;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.input-wrapper button:hover {
+    background: var(--color-button-hover);
+    transform: translateY(-2px) scale(1.04);
+}
+
+/* Listas */
+ul.name-list {
+    width: 100%;
+    max-width: 340px;
+    background: rgba(24,26,35,0.7);
+    border-radius: 18px;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    padding: 16px 0;
+    margin: 0;
+    list-style: none;
+    min-height: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+ul.name-list li {
+    padding: 8px 24px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #23243a 80%, #181a23 100%);
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+ul.name-list li:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.result-text {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: bold;
+    text-align: center;
+    min-height: 28px;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px #0007;
+}
+
+/* Botão de sortear título */
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.button-draw {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 32px;
+    color: #fff;
+    background: linear-gradient(90deg, var(--color-button), var(--color-button-hover));
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.button-draw img {
+    width: 28px;
+    height: 28px;
+    margin-right: 0;
+}
+
+.button-draw:hover {
+    background: linear-gradient(90deg, var(--color-button-hover), var(--color-button));
+    transform: translateY(-2px) scale(1.04);
+}
